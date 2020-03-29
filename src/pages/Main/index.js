@@ -22,10 +22,6 @@ class Main extends Component {
       });
   };
 
-  handleRedirectToListEpisode(id, name) {
-    this.props.history.push('/episodes', { id, name });
-  }
-
   componentDidMount() {
     this.loadMovie();
   }
@@ -39,11 +35,7 @@ class Main extends Component {
           <Row>
             {this.state.movies.map(m => (
               <Card className="card">
-                <Card.Img
-                  variant="top"
-                  src={m.url_picture}
-                  onClick={() => this.handleRedirectToListEpisode(m.id, m.name)}
-                />
+                <Card.Img variant="top" src={m.url_picture} />
                 <Card.Body>
                   <Card.Title
                     style={{
@@ -55,14 +47,7 @@ class Main extends Component {
                     {m.name}
                   </Card.Title>
                   <Card.Text>{m.description}</Card.Text>
-                  <Button
-                    variant="outline-dark"
-                    onClick={() =>
-                      this.handleRedirectToListEpisode(m.id, m.name)
-                    }
-                  >
-                    Watch
-                  </Button>
+                  <Button variant="outline-dark">Watch</Button>
                 </Card.Body>
               </Card>
             ))}
